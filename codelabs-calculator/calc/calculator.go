@@ -1,5 +1,14 @@
 package calc
 
+var (
+	Operations map[string]operation = map[string]operation{
+		"+": &SumType{input: 2},
+		"-": &SubtractType{input: 2},
+		"/": &DivideType{input: 2},
+		"*": &MultiplyType{input: 2},
+	}
+)
+
 type calculator struct {
 	input int64
 	output int64
@@ -55,12 +64,6 @@ func (s *SubtractType) Calculate() (int64, error) {
 }
 
 func CheckOperation(op string) (operation, error) {
-	operations := map[string]operation{
-		"+": &SumType{input: 2},
-		"-": &SubtractType{input: 2},
-		"/": &DivideType{input: 2},
-		"*": &MultiplyType{input: 2},
-	}
-	v := operations[op] 
+	v := Operations[op] 
 	return v,nil
 }

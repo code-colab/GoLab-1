@@ -5,18 +5,22 @@ import (
 	"calculator/calc"
 	"os"
 	"fmt"
+	"strconv"
 )
+
+func IsInt64(s string) bool {
+	if _, err := strconv.ParseInt(s,10,64); err != nil {
+		return false
+	}
+	return true
+}
 
 // Execute The function execute ...
 func Execute() {
-
-	// primeironumero, _ := strconv.ParseInt(os.Args[1], 10, 64)
-	// segundonumero, _ := strconv.ParseInt(os.Args[2], 10, 64)
-	// var myVariable int64 = 6
-	// myReturn, _ := calc.Sum(primeironumero,segundonumero)
-	//  fmt.Println(myReturn)
-	// myReturn, _ = calc.Divide(myVariable, 0)
-	// fmt.Println(myReturn)
+	// fmt.Println(os.Args[1:])
+	// if !IsInt64(os.Args[2]) {
+	// 	fmt.Println(calc.Operations[os.Args[2]])
+	// }	
 
 	o, err := calc.CheckOperation("+")
 	if err != nil {
